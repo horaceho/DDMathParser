@@ -179,13 +179,13 @@
         if (shouldBeUnary) {
             if ([[token token] isEqual:@"+"]) {
                 resolvedOperator = DDOperatorUnaryPlus;
-            } else if ([[token token] isEqual:@"-"]) {
+            } else if ([[token token] isEqual:@"-"] || [[token token] isEqual:@"\u2212"]) {
                 resolvedOperator = DDOperatorUnaryMinus;
             }
         } else {
             if ([[token token] isEqual:@"+"]) {
                 resolvedOperator = DDOperatorAdd;
-            } else if ([[token token] isEqual:@"-"]) {
+            } else if ([[token token] isEqual:@"-"] || [[token token] isEqual:@"\u2212"]) {
                 resolvedOperator = DDOperatorMinus;
             }
         }

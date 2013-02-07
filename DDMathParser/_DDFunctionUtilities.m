@@ -153,7 +153,14 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
 		RETURN_IF_NIL(firstValue);
         
         NSNumber *result = [NSNumber numberWithDouble:tgamma([firstValue doubleValue]+1)];
-        return [DDExpression numberExpressionWithNumber:result];
+        
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setMaximumFractionDigits:0];
+        [formatter setRoundingMode:NSNumberFormatterRoundHalfUp];
+        NSString *resultString = [formatter stringFromNumber:result];
+        NSNumber *integerResult = [NSNumber numberWithLongLong:[resultString longLongValue]];
+        
+        return [DDExpression numberExpressionWithNumber:integerResult];
 	};
 	return DD_AUTORELEASE([function copy]);
 }

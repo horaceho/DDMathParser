@@ -375,6 +375,9 @@
         // there might a "-" or "+" character preceding the exponent
         if ([self _peekNextCharacter] == '-' || [self _peekNextCharacter] == '+') {
             _characterIndex++;
+        } else if ([self _peekNextCharacter] == 0x2212) {
+            _characters[_characterIndex] = '-';
+            _characterIndex++;
         }
         
         NSUInteger indexAtExponentDigits = _characterIndex;
